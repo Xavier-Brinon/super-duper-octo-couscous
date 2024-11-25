@@ -1,0 +1,28 @@
+#+title: EINTR
+#+date: [2024-11-23 Sat]
+#+description: Elisp Introduction
+#+startup: indent
+# #+property: header-args :results output
+
+* 1.1 Lisp lists
+The *quote* ='= is to not interpret the list but to treat it /as-is/.
+
+#+name: List
+#+begin_src emacs-lisp :tangle test.el
+  '(rose
+    violet
+    daisy
+    buttercup)
+#+end_src
+
+#+RESULTS: List
+| rose | violet | daisy | buttercup |
+
+#+name: list evaluation
+#+begin_src emacs-lisp :tangle test.el
+  (+ 2 2)
+#+end_src
+
+#+RESULTS: list evaluation
+: 4
+
