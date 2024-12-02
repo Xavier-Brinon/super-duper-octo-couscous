@@ -4,6 +4,20 @@
 #+startup: indent
 # #+property: header-args :results output
 
+* Prep
+I'm going to use a file *test.el* to run all the examples.
+#+name: prep
+#+begin_src emacs-lisp :tangle test.el
+  ;;; package --- test file
+
+  ;;; Commentary:
+  ;; Generated file from readme.org
+
+  ;;; Code:
+#+end_src
+
+
+
 * 1.1 Lisp lists
 The *quote* ='= is to not interpret the list but to treat it /as-is/.
 
@@ -18,6 +32,7 @@ The *quote* ='= is to not interpret the list but to treat it /as-is/.
 #+RESULTS: List
 | rose | violet | daisy | buttercup |
 
+If there is no quote, the list gets evaluated.
 #+name: list evaluation
 #+begin_src emacs-lisp :tangle test.el
   (+ 2 2)
@@ -26,3 +41,24 @@ The *quote* ='= is to not interpret the list but to treat it /as-is/.
 #+RESULTS: list evaluation
 : 4
 
+* 1.2 Program = Evaluating a list
+The evaluation will do one of three things:
+- Return the list itself (no evaluation per se)
+- Return an error
+- Call the function represented by the first item in the list
+
+~C-x C-e~ :: call the evaluation of the expression
+
+** Evaluating inner lists
+Inner expressions are evaluated first. The value they return are used by the
+outer expressions.
+
+#+name: Inner loop evaluation
+#+begin_src emacs-lisp :tangle test.el
+  (+ 2 (+ 8 2))
+#+end_src
+
+#+RESULTS: Inner loop evaluation
+: 12
+
+* 1.7 Variables
