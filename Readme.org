@@ -62,3 +62,53 @@ outer expressions.
 : 12
 
 * 1.7 Variables
+Example of a variable using Emacs ~fill-column~. Evaluating / Executing gives
+the value *bound* to that variable.
+
+#+name: fill-column
+#+begin_src emacs-lisp
+  fill-column
+#+end_src
+
+#+RESULTS: fill-column
+: 70
+
+Variables and functions are treated differently. To evaluate a function, you put
+it as first member of a list: ~(foo ...)~.
+Evaluating foo by itself will only trigger an error: ~foo~
+
+Evaluating of variables are the opposite. As firts element of a list, it will
+throw an error: ~(fill-column ...)~
+
+* Message
+~message~ is sending the content of its arguments to the buffer area
+
+#+name: message
+#+begin_src emacs-lisp
+  (message "This message appears in the echo area!")
+#+end_src
+
+#+RESULTS: message
+: This message appears in the echo area!
+
+=%s= is a string formatter
+#+name: message-with-%s
+#+begin_src emacs-lisp
+     (message "The name of the buffer is %s" (buffer-name))
+#+end_src
+
+#+RESULTS: message-with-%s
+: The name of the buffer is Readme.org
+
+For numbers, use =%d=
+#+name: message-with-%d
+#+begin_src emacs-lisp
+     (message "The value of fill-column is %d" fill-column)
+#+end_src
+
+#+RESULTS: message-with-%d
+: The value of fill-column is 70
+
+Actually, you can use ‘%s’ to print a number.  It is non-specific.  ‘%d’ prints
+only the part of a number left of a decimal point, and not anything that is not
+a number.
